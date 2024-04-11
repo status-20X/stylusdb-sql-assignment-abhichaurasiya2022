@@ -28,3 +28,9 @@ test('Execute SQL Query', async () => {
     expect(result[0]).not.toHaveProperty('age');
     expect(result[0]).toEqual({ id: '1', name: 'John' });
 });
+
+test('Execute SQL Query - Error Handling', async () => {
+    const invalidQuery = 'INVALID SQL QUERY';
+    await expect(executeSELECTQuery(invalidQuery)).rejects.toThrowError('Error executing SELECT query: Invalid query');
+});
+
